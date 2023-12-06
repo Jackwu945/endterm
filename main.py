@@ -1,5 +1,4 @@
 #  Authored Jack Wu
-#  软工5班吴宇杰期末作业
 import numpy as np
 import sympy
 from clm import get_solution as clm_solution
