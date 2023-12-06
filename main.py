@@ -4,7 +4,6 @@ import sympy
 from clm import get_solution as clm_solution
 
 
-
 class LinerAlgebraCalculator:
     def __init__(self):
         self.welcome = '欢迎使用马鹿牌线性代数计算器\n请选择功能（按q退出）'
