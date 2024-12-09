@@ -1,0 +1,122 @@
+.welcome_page{
+    top:0px;
+    transition: 0.5s;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    justify-content: center;
+    overflow: hidden;
+    background-image: url("../image/case01.jpg");
+}
+.welcome_page>h1{
+    text-align: center;
+    margin: 25vh auto;
+}
+.welcome_page>h1{
+    justify-content: center;
+    color: white;
+    margin-top: 15%;
+    margin-bottom: 2%;
+    font-weight: bold;
+    font-size: 64px;
+}
+.welcome_page>h2{
+    position: relative;
+    margin-top: 0;
+    margin-left: 45%;
+    color: #ffba16;
+    font-weight: bold;
+    font-size: 48px;
+}
+body{
+    background: rgb(255,255,255);
+}
+.container{
+    top:200vh;
+    margin-top: 10%;
+    transition: 0.5s;
+    background: rgb(246,246,246);
+    width: 90%;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: auto;
+    /*height: 100vh;*/
+    position: absolute;
+}
+.player{
+    margin: 5vh auto;
+    width: 50%;
+    height: 40vh;
+}
+.why_canton{
+    width: 100%;
+    margin-top: 10%;
+    height: 50vh;
+}
+.prompt_canton{
+    width: 100%;
+    margin-top: 5%;
+    height: 60vh;
+}
+.prompt_canton>div{
+    height: 90%;
+    width: 70%;
+}
+.explore_canton{
+    width: 100%;
+    margin-top: 5%;
+    height: 80vh;
+}
+.why_canton>img{
+    float: left;
+    margin-top: 2.5vh;
+    margin-left: 5%;
+    width: 22%;
+    border: black 3px solid;
+    border-radius: 3px;
+    height: 42.5vh;
+}
+.why_canton>p{
+    font-family: zcool kuaile, cursive;
+    float: left;
+    margin-left: 10%;
+    margin-bottom: 0;
+    width: 50%;
+    font-size: 24px;
+}
+.exp_inner{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 5vh auto;
+    height: 70vh;
+}
+.why_canton>h1,.prompt_canton>h1,.explore_canton>h1,.scenery_canton>h1{
+    margin: auto;
+    text-align: center;
+    align-items: center;
+
+}
+
+.why_canton>h1,.prompt_canton>h1,.explore_canton>h1,.scenery_canton>h1{
+    width: 100%;
+    border-bottom: 1px solid dimgray; /* 分隔线样式 */
+    margin: 0 auto; /* 分隔线与文本的间距 */
+}
+
+.footer{
+    margin-top: 5px;
+    background-color: #605a5a;
+    height: 50px;
+    justify-content: center;
+    text-align: center;
+}
+.footer>p{
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 18px;
+}
+

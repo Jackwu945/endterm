@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Canton 广东非遗旅行网</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/main_mob.css">
+    <link rel="stylesheet" type="text/css" href="css/nav_mob.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script type="module" src="dist/bundle.js"></script>
+</head>
+<body>
+    <div class="welcome_page">
+        <h1>广东非遗旅游网</h1>
+        <h2>带你体验岭南文化的深厚底蕴</h2>
+    </div>
+    <nav class="p1_nav">
+        <img src="image/logo.png">
+        <a href="#" class="intro">地区推介</a>
+        <ul class="dropdown">
+            <li><a href="body/foshan">佛山</a></li>
+            <li><a href="body/guangzhou">广州</a></li>
+            <li><a href="body/jieyang">揭阳</a></li>
+            <li><a href="body/shantou">汕头</a></li>
+            <li><a href="body/zhaoqing">肇庆</a></li>
+        </ul>
+        <a href="explore.html">非遗地图</a>
+        <a href="body">非遗名胜</a>
+        <a href="usr/appointment.html">预约非遗导游</a>
+        <a href="/index.html">首页</a>
+        <span class="logspan"></span> <input type="button" value="" class="login-btn" onclick="window.location.href='usr/usr_info.html'">
+    </nav>
+    <div class="container">
+    <div class="why_canton">
+        <h1>为什么选择探索广东非遗</h1>
+        <img src="image/why.jpg">
+        <p>广东，一个充满活力与多样性的地方，是旅行者的梦想之地。这里不仅有着繁华的都市如广州塔、长隆度假区，还拥有自然奇观如开平碉楼和丹霞山。</p>
+        <p>从海滨的温暖阳光到历史古城的静谧，从科技的前沿探索到茶田间的悠闲漫步，广东以其岭南文化、丰富的美食和旅游资源，展现出它独特的魅力。</p>
+        <p>无论是寻求现代化都市的繁华体验，还是渴望探索自然与历史的深度旅行，广东都能满足您的所有期待。</p>
+        <p>选择广东，就是选择一个充满可能性的旅程。</p>
+    </div>
+    <div class="prompt_canton">
+        <h1>广东宣传片</h1>
+        <div id="dplayer" class="player"></div>
+    </div>
+    <div class="explore_canton" id="exp">
+        <h1>探索广东非遗地图(点我进入页面)</h1>
+        <iframe src="explore_if.html" class="exp_inner" ></iframe>
+    </div>
+    <div class="explore_canton" id="scenery">
+        <h1>探索广东非遗名胜(点我进入详情页面)</h1>
+        <iframe src="body/index_if.html" class="exp_inner" ></iframe>
+    </div>
+    <div class="footer">
+        <p>©2024 GCAST Web Design Class -- Wu&Fang’s product</p>
+        <p style="color: red">No copy</p>
+    </div>
+</div>
+
+</body>
+</html>

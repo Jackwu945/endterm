@@ -1,0 +1,165 @@
+.p2_nav{
+    transition: 1s;
+    position: fixed;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top:0;
+    left: 0;
+    z-index: 100; /*保证nav高度优先*/
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255,255,255,1);
+}
+.p1_nav{
+    transition: 1s;
+    position: fixed;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top:0;
+    left: 0;
+    z-index: 100; /*保证nav高度优先*/
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255,255,255,0);
+}
+.dropdown{
+    transition: 1s;
+    display: none;
+    position: absolute;
+    top: 100%; /* 紧跟在触发元素下方 */
+    left: 9%; /* 与父元素左边缘对齐 */
+    width: 10%;
+    height: 0;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    z-index: 10; /* 确保在其他元素上方 */
+    background-color: gray;
+    list-style-type: none; /* 移除项目符号 */
+    padding: 0; /* 移除内边距 */
+    margin: 0; /* 移除外边距 */
+}
+.intro{
+    margin: 0 10px;
+    line-height: 50px;
+    height: 50px;
+    width: 10%;
+    text-align: center;
+    transition: 1s;
+    background-color: rgba(242,242,242,0);
+    text-decoration: none;
+    position: relative; /* 为下拉菜单定位做准备 */
+}
+.intro:hover{
+    transition: 1s;
+    background-color: rgb(178, 178, 178);
+}
+.intro:hover+.dropdown {
+    display: block; /* 显示下拉菜单 */
+    height: 200px;
+    transition: height 1s ease;
+}
+.dropdown:hover{
+    transition: 1s;
+    display: block; /* 显示下拉菜单 */
+    height: 200px;
+}
+.dropdown>li{
+    width: 100%;
+    height: 20%;
+    text-decoration: none;
+}
+.dropdown>li>a{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    justify-content: center;
+    font-size: 125%;
+}
+.dropdown>li:hover{
+    background-color: #c9c9c9;
+    transition: 1s;
+}
+
+
+.p1_nav>a:not(.intro){
+    margin: 0 10px;
+    line-height: 50px;
+    height: 50px;
+    width: 10%;
+    text-align: center;
+    transition: 1s;
+    background-color: rgba(242,242,242,0);
+    text-decoration: none;
+}
+.p1_nav>a:hover:not(.intro){
+    transition: 1s;
+    background-color: rgb(178, 178, 178);
+}
+.p1_nav>img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-left: 5%;
+    width: 50px;
+}
+
+
+
+.p2_nav>a:not(.intro){
+    margin: 0 10px;
+    line-height: 50px;
+    height: 50px;
+    width: 10%;
+    text-align: center;
+    transition: 1s;
+    background-color: rgba(242,242,242,0);
+    text-decoration: none;
+}
+.p2_nav>a:hover:not(.intro){
+    transition: 1s;
+    background-color: rgb(178, 178, 178);
+}
+.p2_nav>img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-left: 5%;
+    width: 50px;
+}
+/* 登录按钮基础样式 */
+.logspan{
+    line-height: 50px;
+    margin-left: 15%;
+}
+.login-btn {
+    margin-right: 5%;
+    width: 5%;
+    height: 40px;
+    background: linear-gradient(to right, #007bff, #28a745);
+    color: white; /* 白色文字 */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+}
+
+/* 鼠标悬停效果 */
+.login-btn:hover {
+    background-color: #065700; /* 深蓝色背景 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+    transform: translateY(-2px); /* 轻微上移 */
+}
+
+/* 按钮被按下时的效果 */
+.login-btn:active {
+    transform: translateY(1px); /* 轻微下移 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 调整阴影 */
+}

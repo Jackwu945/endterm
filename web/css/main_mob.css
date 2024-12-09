@@ -1,0 +1,39 @@
+/* 使用媒体查询为不同屏幕大小设置样式 */
+@media (max-width: 480px) {
+    .welcome_page {
+        display: flex;
+        height: auto; /* 使高度自适应内容 */
+        background-size: cover; /* 确保背景图片覆盖整个元素 */
+    }
+    .welcome_page > h1 {
+        font-size: 32px; /* 减小标题字体大小 */
+        margin: 20vh auto; /* 调整标题的上下边距 */
+    }
+    .welcome_page > h2 {
+        display: none;
+    }
+    .container {
+        display: flex;
+        top: auto; /* 移除绝对定位 */
+        position: relative; /* 改为相对定位 */
+        width: 100%; /* 容器宽度调整为100% */
+        /*margin-top: 5%; !* 调整上边距 *!*/
+    }
+    .player,
+    .why_canton,
+    .prompt_canton,
+    .explore_canton {
+        display: flex;
+        width: 90%; /* 调整宽度以适应屏幕 */
+        height: auto; /* 高度自适应内容 */
+    }
+    .why_canton > img {
+        width: 90%; /* 图片宽度调整为90% */
+        margin: 2.5vh auto; /* 调整图片的上下边距 */
+        display: block; /* 图片独占一行 */
+    }
+    .why_canton > p,
+    .exp_inner {
+        width: 100%; /* 文本和内部元素宽度调整为100% */
+    }
+}

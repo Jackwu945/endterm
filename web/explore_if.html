@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-ch">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片转场放大效果</title>
+  <link rel="stylesheet" type="text/css" href="css/earth.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <img src="image/image1.png" class="image active" alt="图片一">
+    <img src="../image/image2.png" class="image" alt="图片二">
+  </div>
+  <div class="cloud-left" style="background-image: url('image/cloud-image.png');"></div>
+  <div class="cloud-right" style="background-image: url('image/cloud-image.png');"></div>
+  <div class="point">
+    <img src="image/point1.png" class="point1" alt="肇庆">
+    <img src="image/point2.png" class="point2" alt="广州">
+    <img src="image/point3.png" class="point3" alt="汕头">
+    <img src="image/point4.png" class="point4" alt="佛山">
+    <img src="image/point5.png" class="point5" alt="揭阳">
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      setTimeout(function () {
+        var images = document.querySelectorAll('.point img');
+        images.forEach(function (image) {
+          image.style.animation = 'fade-in 3s,float 2s infinite ease-in-out';
+          image.style.opacity = 1;
+        });
+      }, 3500);
+    });
+    window.addEventListener('DOMContentLoaded', function () {
+      setTimeout(function () {
+        var button = document.querySelector('.explore-button');
+        button.style.animation = 'fade-in 3s';
+        button.style.opacity = 1;
+      }, 5000);
+    });
+    document.getElementById('exploreButton').addEventListener('click', function () {
+      window.location.href = "body/index.html";
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.point1 {
+  width: 70px; 
+  left: 34vw;
+  top: 38vh;
+  position: absolute;
+  z-index: 98;
+  opacity: 0;
+}
+.point2 {
+  width: 70px; 
+  left: 41vw;
+  top: 38vh; 
+  position: absolute;
+  z-index: 98;
+  opacity: 0;
+}
+.point3 {
+  width: 70px; 
+  left: 63vw;
+  top: 34vh; 
+  position: absolute;
+  z-index: 98;
+  opacity: 0;
+}
+.point4 {
+  width: 70px; 
+  left: 39.5vw;
+  top: 41vh; 
+  position: absolute;
+  z-index: 98;
+  opacity: 0;
+}
+.point5 {
+  width: 70px; 
+  height: auto; 
+  left: 59vw;
+  top: 29vh; 
+  position: absolute;
+  z-index: 98;
+  opacity: 0;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.explore-button {
+  position: absolute;
+  top: 80vh;
+  left: 42vw;
+  border: none;
+  background:none;
+  background-image: url("../image/button.png");
+  width: 480px;
+  height: 135px;
+  background-position: center;
+  cursor: pointer;
+  opacity: 0; 
+  animation-fill-mode: both; 
+  transition: background-image 0.1s ease-in-out;
+  z-index: 97;
+}
+
+.explore-button:hover {
+  background-image: url("../image/button-hover.png");
+  z-index: 98;
+}
+.image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持图片宽高比并填充容器 */
+  opacity: 0;
+  transition: opacity 3s, transform 3s ease; /* 设置过渡效果 */
+}
+
+.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 定义图片放大并淡出的动画 */
+@keyframes fadeOutAndScaleUp {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  60% {
+    /* 在动画进行到一半之前，变化较为缓慢 */
+    opacity: 1;
+    transform: scale(1.5);
+  }
+  100% {
+    /* 后半段加速放大并淡出 */
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+/* 触发动画 */
+.image:not(.active) {
+  animation: fadeOutAndScaleUp 4s ease-in-out forwards; /* 动画持续时间调整为4秒，并使用ease-in-out缓动效果 */
+}
+.cloud-left {
+  width: 200%; /* 使用视窗宽度的50%，根据实际情况调整 */
+  height: 200%; /* 保持图片的宽高比 */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* 让图片填充整个div并保持宽高比 */
+  top: -50vh; /* 放置在视口高度的中部 */
+  position: absolute;
+  transform: translateY(-50%);
+  opacity: 1;
+  z-index: 99;
+}
+
+.cloud-right {
+  width: 200%; /* 使用视窗宽度的50%，根据实际情况调整 */
+  height: 200%; /* 保持图片的宽高比 */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* 让图片填充整个div并保持宽高比 */
+  top: -50vh; /* 同样放置在视口高度的中部 */
+  position: absolute;
+  transform: translateY(-50%);
+  opacity: 1;
+  z-index: 99;
+}
+
+.cloud-left {
+  left: 0;
+  animation: fadeOutLeft 4.5s ease-in-out forwards;
+}
+
+.cloud-right {
+  right: 0;
+  animation: fadeOutRight 4.5s ease-in-out forwards;
+}
+
+/* 定义向左淡出动画 */
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateX(1400px); /* 控制向左移动的距离，实现淡出效果 */
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2400px); /* 控制向右移动的距离，实现淡出效果 */
+  }
+}
+
+/* 定义向右淡出动画 */
+@keyframes fadeOutRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-1400px); /* 控制向右移动的距离，实现淡出效果 */
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-2400px); /* 控制向右移动的距离，实现淡出效果 */
+  }
+}

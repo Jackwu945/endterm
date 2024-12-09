@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+body {
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #444;
+	line-height: 24px;
+	/* background: #444; */
+}
+.main {
+	width: 980px;
+	margin: 0 auto;
+	background: #fff;
+}
+.main .top img {
+	width: 980px;
+	height: 500px;
+}
+.menu {
+	background: #017069;
+	height: 40px;
+}
+.menu li {
+	float: left;
+}
+.menu li a {
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	padding: 0px 30px;
+	color: #fff;
+	text-decoration: none;
+}
+.menu li a:hover {
+	background: #05596b;
+}
+.con {
+	padding: 30px;
+}
+.con h2 {
+	text-align: center;
+	margin: 30px 0; font-size: 30px;
+}
+.con table {
+	margin: 30px 0;
+}
+.con p{ text-indent: 2em;}

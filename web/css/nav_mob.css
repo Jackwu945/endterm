@@ -1,0 +1,75 @@
+
+/* 小屏幕设备 */
+@media (max-width: 480px) {
+    .p2_nav{
+        display: none;
+    }
+    .p1_nav{
+        display: none;
+    }
+    .dropdown{
+        display: none;
+    }
+    .intro{
+        display: none;
+    }
+    .intro:hover{
+        display: none;
+    }
+    .intro:hover+.dropdown {
+        display: none;
+    }
+    .dropdown:hover{
+        display: none;
+    }
+    .dropdown>li{
+        display: none;
+    }
+    .dropdown>li>a{
+        display: none;
+    }
+    .dropdown>li:hover{
+        display: none;
+    }
+
+
+    .p1_nav>a:not(.intro){
+        display: none;
+    }
+    .p1_nav>a:hover:not(.intro){
+        display: none;
+    }
+    .p1_nav>img{
+        display: none;
+    }
+
+
+
+    .p2_nav>a:not(.intro){
+        display: none;
+    }
+    .p2_nav>a:hover:not(.intro){
+        display: none;
+    }
+    .p2_nav>img{
+        display: none;
+    }
+    /* 登录按钮基础样式 */
+    .logspan{
+        display: none;
+    }
+    .login-btn {
+        display: none;
+    }
+
+    /* 鼠标悬停效果 */
+    .login-btn:hover {
+        display: none;
+    }
+
+    /* 按钮被按下时的效果 */
+    .login-btn:active {
+        display: none;
+    }
+
+}
