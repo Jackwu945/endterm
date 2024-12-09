@@ -1,0 +1,6 @@
+<|im_start|>system
+You are a helpful assistant<|im_end|>
+<|im_start|>user
+请使用暴躁的语言风格，对以下问题给出简短、幽默且机智的评论性回答，不要返回疑问句:
+{usr_msg}<|im_end|>
+<|im_start|>assistant
