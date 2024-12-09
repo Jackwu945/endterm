@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://cherrysigma.com/hxj/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+
+  <title>人生导航登录页</title>
+
+  <style>
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+</style>
+
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  color: white;
+  font-size: 12px;
+  background: #333333 ;
+}
+
+#main {
+  background: #111;
+  width: 300px;
+  margin: 30px auto;
+  border-radius: 0.4em;
+  border: 1px solid #191919;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+#main:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 1px;
+  width: 100px;
+  left: 20%;
+  background: linear-gradient(to right, #111111, #444444, #b6b6b8, #444444, #111111);
+  top: 0;
+}
+
+#main:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 5px;
+  border-radius: 50%;
+  left: 34%;
+  top: -7px;
+  box-shadow: 0 0 6px 4px #fff;
+}
+
+.inset {
+  padding: 20px;
+  border-top: 1px solid #19191a;
+}
+
+h1 {
+  font-size: 18px;
+  text-shadow: 0 1px 0 black;
+  text-align: center;
+  padding: 15px 0;
+  border-bottom: 1px solid black;
+  position: relative;
+}
+
+h1:after {
+  content: "";
+  display: block;
+  width: 250px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  pointer-events: none;
+  transform: rotate(70deg);
+  background: linear-gradient(50deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
+}
+
+label {
+  color: #666;
+  display: block;
+  padding-bottom: 9px;
+}
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 8px 5px;
+  background: linear-gradient(#1f2124, #27292c);
+  border: 1px solid #222;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 0.3em;
+  margin-bottom: 20px;
+}
+
+label[for=remember] {
+  color: white;
+  display: inline-block;
+  padding-bottom: 0;
+  padding-top: 5px;
+}
+
+input[type=checkbox] {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.p-container {
+  padding: 0 20px 20px 20px;
+}
+
+.p-container:after {
+  clear: both;
+  display: table;
+  content: "";
+}
+
+.p-container span {
+  display: block;
+  float: left;
+  color: #0d93ff;
+  padding-top: 8px;
+}
+
+input[type=submit] {
+  padding: 5px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 10px 10px rgba(255, 255, 255, 0.1);
+  border-radius: 0.3em;
+  background: #0184ff;
+  color: white;
+  float: right;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+input[type=submit]:hover {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -10px 10px rgba(255, 255, 255, 0.1);
+}
+
+input[type=text]:hover,
+input[type=password]:hover,
+label:hover ~ input[type=text],
+label:hover ~ input[type=password] {
+  background: #27292c;
+}
+
+</style>
+
+<style type="text/css">#_copy{align-items:center;background:#4494d5;border-radius:3px;color:#fff;cursor:pointer;display:flex;font-size:13px;height:30px;justify-content:center;position:absolute;width:60px;z-index:1000}#select-tooltip,#sfModal,.modal-backdrop,div[id^=reader-helper]{display:none!important}.modal-open{overflow:auto!important}._sf_adjust_body{padding-right:0!important}.enable_copy_btns_div{position:fixed;width:154px;left:10px;top:45%;background:#e7f1ff;border:2px solid #4595d5;font-weight:600;border-radius:2px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;z-index:5000}.enable_copy_btns_logo{width:100%;background:#4595d5;text-align:center;font-size:12px;color:#e7f1ff;line-height:30px;height:30px}.enable_copy_btns_btn{display:block;width:128px;height:28px;background:#7f5711;border-radius:4px;color:#fff;font-size:12px;border:0;outline:0;margin:8px auto;font-weight:700;cursor:pointer;opacity:.9}.enable_copy_btns_btn:hover{opacity:.8}.enable_copy_btns_btn:active{opacity:1}</style></head>
+
+<body inmaintabuse="1">
+
+  <h1>人生导航登录页</h1>
+  <div class="inset" id="main">
+  <p>
+    <label for="name">学号</label>
+    <input type="text" name="email" id="name">
+  </p>
+  <p>
+    <label for="pwd">密码</label>
+    <input type="password" name="password" id="pwd">
+  </p>
+  <!--</div>-->
+  <!--<div class="p-container" id="main">-->
+    <a id="text"></a><a>
+     <button name="go" id="button">登录</button>
+  </a></div><a>
+
+
+<div style="text-align:center;clear:both;">
+    <script>
+        document.getElementById('button').addEventListener('click', loadText);
+        document.getElementById('text').innerHTML = "要输入正确密码以爬取教导系统课表"
+        function loadText() {
+            document.getElementById('text').innerHTML = "正在获取神经连接....."
+            
+            var data = { "name": document.getElementById('name').value , "pwd": document.getElementById('pwd').value}; //创建传递信息
+            
+            // data = JSON.stringify(data);
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://10.226.8.13:8080/verify', true)
+
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    r = JSON.parse(this.responseText);
+                    if (r.code==200){
+                    for(var key in r.data) {
+                        document.cookie=key+"="+r.data[key];
+                    }
+
+                    window.location.href="/mylife";
+                    }
+                    else{
+                    document.getElementById('text').innerHTML = r.data;
+                    alert(r.data);
+                    }
+                }
+            }
+            xhr.onerror = function () {
+                console.log("requests error");
+            }
+            xhr.setRequestHeader(
+                "Content-Type",
+                "application/json;charset=utf-8"
+            ); // 告诉服务器格式是json
+            xhr.send(JSON.stringify(data)); // 发送
+            // xhr.send();
+        }
+
+    </script>
+</div>
+
+
+</a><script src="chrome-extension://nhiheekdcnmfbapkmpbhmplfddenhjic/sm.bundle.js" data-pname="supercopy-v3" data-asset-path="https://spc3.s3.ap-east-1.amazonaws.com"></script></body></html>

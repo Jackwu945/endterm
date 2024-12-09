@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="yue-Hant-HK" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>人生导航</title>
+    <style>
+        .chg_btn{
+            border-radius: 5px;
+            opacity: 0.9;
+            background-color: #409FFF;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            box-shadow:inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+            inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+
+        }
+        .chg_btn:hover {
+          background-color: rgb(115, 215, 93);
+        }
+
+        .chg_btn:active {
+          box-shadow:
+            inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+            inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+        }
+        .chg_btn:disabled{
+            background-color: #97a8be;
+        }
+
+        .modal {
+        display: none; /* 默认隐藏 */
+        position: fixed; /* 固定定位 */
+        z-index: 1; /* 设置在顶层 */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    /* 弹窗内容 */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        height: 80%;
+    }
+
+    /* 关闭按钮 */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+        .card {
+            position: relative;
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            border-radius: 25px;
+            background: rgba(255,252,153,0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            color: black;
+            padding: 2em;
+            width: 100%;
+            max-width: 420px;
+            perspective: 1000px;
+            margin: 1em;
+            backdrop-filter: blur(5px);
+        }
+        .zoomcard {
+            transition: transform .2s; /* 动画 */
+            position: relative;
+            box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            border-radius: 25px;
+            background: rgba(255,252,153,0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            color: black;
+            padding: 2em;
+            width: 100%;
+            max-width: 420px;
+            perspective: 1000px;
+            margin: 1em;
+            backdrop-filter: blur(5px);
+        }
+        .zoomcard:hover {
+            transform: scale(1.05); /* （150% 缩放 - 注意：如果缩放太大，它会超出视口） */
+        }
+        h2.city {
+            margin-top: 0.5em;
+            text-align: center;
+            font-size: 1.5em;
+            transform: translateZ(30px);
+        }
+
+        a.activityshow {
+            margin: 0;
+            align-items: center;
+            font-size: 1.5em;
+            transform: translateZ(15px);
+        }
+
+        h1.temp {
+            margin: 0;
+            font-size: 2em;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-left: 0.1em;
+            transform: translateZ(30px);
+        }
+
+        .description {
+            text-transform: capitalize;
+            margin-left: 8px;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: left;
+        }
+
+        .other {
+            font-size: 1.2em;
+            font-weight: 500;
+            transform: translateZ(30px);
+        }
+        .content_centre{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .if_centre{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .title_centre{
+            font-weight: bolder;
+            font-size: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .layout_inner {
+            width: auto;
+            height: auto;
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .layout {
+
+            opacity: 0.7;
+            width: auto;
+            height: auto;
+
+
+            display: grid;
+            grid:
+            "header" auto
+            "main" 1fr
+            "footer" auto
+        / 1fr;
+            gap: 8px;
+        }
+        .header { grid-area: header;background: #f56c6c }
+        .main { grid-area: main;background: #409EFF;border-radius: 30px}
+        .footer { grid-area: footer;background: #ffc300 }
+
+
+        body {
+            background-image: url('static/bg2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+    </style>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+<!--    <div class="maincontent">-->
+<div class="content_centre">
+    <section class="layout">
+        <div class="header">
+            <a><a id="year"></a>年<a id="month"></a>月<a id="day"></a>日,<a id="time"></a></a>
+            <h class="title_centre">人生导航 主面板</h>
+        </div>
+        <div class="main">
+            <section class="layout_inner">
+                <div class="card">
+                    <div class="weather">
+                        <h2 class="city" id="citybox">广州</h2>
+                        <h1 class="temp" id="tempbox">温度加载中</h1>
+                        <div class="flex">
+                            <img src="https://openweathermap.org/img/wn/01d.png" alt="" class="icon">
+                            <div class="description" id="descriptionbox">天气状态加载中</div>
+                        </div>
+                        <div class="other">
+                            <a>每日一言</a><br>
+                            <a id="box">加载中</a><br><br>
+                            <a>每日一词:</a>
+                            <a id="box_word">loading...</a><br>
+                            <a id="meaning" style="color: red">(点我看单词释意和音标)</a><br>
+<!--                            <a id="sentence"></a><br>-->
+<!--                            <a id="sentencecn"></a><br>-->
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="zoomcard" id="myCard1" title="单击放大">
+                        <h2 class="city" id="statement">课程表(加载完毕后可单击放大)</h2>
+                        <iframe class="if_centre"
+                                id="ifr"
+                                width=425
+                                height="220"
+                                srcdoc="<a>加载中</a>">
+                        </iframe>
+                        <a class="if_centre" style="color:red;display: none" id = 'table_notify'>加载失败！可能是密码错误，请尝试刷新或重新登录</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <h2 class="city">今日活动小结</h2>
+                        <a class="activityshow" id="act1">加载中</a><br>
+                        <a class="activityshow" id="act2"></a><br>
+                        <a class="activityshow" id="act3"></a><br>
+                        <a class="activityshow" id="act4"></a><br>
+                        <a class="activityshow" id="act5"></a><br>
+                        <a class="activityshow" id="act6"></a><br>
+                        <a class="activityshow" id="act7"></a><br>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <h2 class="city">待办事项</h2>
+                        <a class="activityshow" id="todo1">加载中</a><br>
+                        <a class="activityshow" id="todo2"></a><br>
+                        <a class="activityshow" id="todo3"></a><br>
+                        <a class="activityshow" id="todo4"></a><br>
+                        <a class="activityshow" id="todo5"></a><br>
+                    </div>
+                </div>
+                <div>
+                    <div class="zoomcard" title="单击查看详情" id="health">
+                        <h2 class="city">健康监测</h2>
+                        <a class="activityshow">BMI：<a class="activityshow" id="bmi">加载中</a></a><br>
+                        <a class="activityshow">步数/目标： <a class="activityshow" id="steps" >加载中</a><a class="activityshow">/10000</a></a><br>
+                        <a class="activityshow">最新心率： <a class="activityshow" id="heartbeat">加载中</a><a class="activityshow">bpm</a></a><br>
+                        <a class="activityshow">今日运动时间： <a class="activityshow" id="sporttime">加载中</a><a class="activityshow">min/60min</a></a><br>
+                        <a class="activityshow">健康值： <a class="activityshow" id = "grade">加载中</a></a><br>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <h2 class="city">花销管理</h2>
+                        <a class="activityshow" id="expend1">加载中</a><br>
+                        <a class="activityshow" id="expend2"></a><br>
+                        <a class="activityshow" id="expend3"></a><br>
+                        <a class="activityshow" id="expend4"></a><br>
+                        <a class="activityshow" id="expend5"></a><br>
+                    </div>
+                </div>
+                <div id="myModal" class="modal">
+                    <!-- 弹窗内容 -->
+                    <div class="modal-content">
+                        <span class="close" id="span">&times;</span>
+                        <iframe class="if_centre"
+                                id="ifrbig"
+                                width=100%
+                                height=90%
+                                srcdoc="<a>加载中</a>">
+                        </iframe>
+                    </div>
+                </div>
+                <div id="mydiag" class="modal">
+                    <!-- 弹窗内容 -->
+                    <div class="modal-content">
+                        <span class="close" id="span2">&times;</span>
+                        <iframe class="if_centre"
+                                id="ifdiag"
+                                width=100%
+                                height=90%
+                                src="statics/bmi.html"
+                                style="opacity: 0.95"
+                                >
+                        </iframe>
+                        <input class="chg_btn" type="button" id="btn1" value="BMI" disabled />
+                        <input class="chg_btn" type="button" id="btn2" value="步数" />
+                        <input class="chg_btn" type="button" id="btn3" value="心率" />
+                        <input class="chg_btn" type="button" id="btn4" value="运动时间" />
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="footer">
+            <a>©2023 GZASC-<a style="font-weight: bold">JackWu's Project Group ALL RIGHT RESERVED.<a> 广应科计算机学院软工5班小组成员：吴宇杰、李创宇、方炜、谭柱荣 制作 Karakai-Jozu no takagisan is the NO.1 animation in the world.</a><br>
+                <a href="https://icp.gov.moe/?keyword=20231890" target="_blank" style="color:red" class = if_centre>萌ICP备20231890号</a>
+        </section>
+    </div>
+
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script>
+    var d = new Date();//获取系统当前时间
+
+    document.getElementById('year').textContent = d.getFullYear()
+    document.getElementById('month').textContent = d.getMonth()
+    document.getElementById('day').textContent = d.getDay()
+    // 1.获取元素
+    var div = document.getElementById('time');
+    // 2. 得到当前的小时数
+    var nowTime = new Date();
+    var h = nowTime.getHours();
+    // 3. 判断小时数,改变文字信息
+    if (h <= 4) {
+    div.innerHTML = "夜已深，同学注意休息哦，别熬太晚了~"
+    } else if (h <= 7) {
+    div.innerHTML = "亲爱的同学，早安呀！"
+    } else if (h <= 12) {
+    div.innerHTML = "早起的虫子有鸟吃，开启美好的一天叭！"
+    } else if (h <= 13) {
+    div.innerHTML = "诶嘿嘿，是时候午休咯！"
+    } else if (h <= 18) {
+    div.innerHTML = "亲爱的同学，下午好，记得喝下午茶！"
+    } else if (h <= 21) {
+    div.innerHTML = "亲爱的同学，晚安哟！"
+    }
+    else if (h <= 23) {
+    div.innerHTML = "晚安同学，准备去洗洗睡吧，祝好梦~"
+    }
+    else {
+    div.innerHTML = "byd又点炒面是吧"
+    }
+</script>
+
+<script>
+    var ifr = document.getElementById('ifdiag')
+    var btn1=document.getElementById('btn1');
+    var btn2=document.getElementById('btn2');
+    var btn3=document.getElementById('btn3');
+    var btn4=document.getElementById('btn4');
+    btn1.onclick = function(){
+        btn1.disabled=true;
+        ifr.src = "static/bmi.html"
+        btn2.disabled=false;
+        btn3.disabled=false;
+        btn4.disabled=false;
+    }
+    btn2.onclick = function() {
+        btn1.disabled = false;
+        ifr.src = "static/bushu.html"
+        btn2.disabled = true;
+        btn3.disabled = false;
+        btn4.disabled = false;
+    }
+    btn3.onclick = function() {
+        btn1.disabled=false;
+        ifr.src = "static/sporttime.html"
+        btn2.disabled=false;
+        btn3.disabled=true;
+        btn4.disabled=false;
+    } // 下同，略
+    btn4.onclick = function() {
+        btn1.disabled=false;
+        btn1.disabled=false;ifr.src = "static/yundong.html"
+        btn2.disabled=false;
+        btn3.disabled=false;
+        btn4.disabled=true;
+    }
+
+</script>
+
+<script>// 获取弹窗
+var modal = document.getElementById('myModal');
+var modal2 = document.getElementById('mydiag');
+
+// 打开弹窗的按钮对象
+var mycard = document.getElementById("myCard1");
+var mycard2 = document.getElementById("health")
+
+// 获取 <span> 元素，用于关闭弹窗
+var span = document.getElementById("span");
+var span2 = document.getElementById("span2");
+
+// 点击按钮打开弹窗
+mycard.onclick = function() {
+    modal.style.display = "block";
+}
+mycard2.onclick = function() {
+    modal2.style.display = "block";
+}
+
+// 点击 <span> (x), 关闭弹窗
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+span2.onclick = function() {
+    modal2.style.display = "none";
+}
+
+// 在用户点击其他地方时，关闭弹窗
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    else if (event.target == modal2) {
+        modal2.style.display = "none";
+    }
+}
+</script>
+
+<script src="static/axios.min.js"></script>
+
+<script>  // 一言和英文
+    axios.get('https://tenapi.cn/v2/yiyan').then(function (resp){
+        var yiyanbox = document.getElementById('box')
+        yiyanbox.text = resp.data
+    })
+    var meaning = document.getElementById('meaning')
+            var boxword = document.getElementById('box_word')
+
+    axios.get('http://10.226.8.13:8080/english').then(function (resp){
+        // var sentence = document.getElementById('sentence')
+        // var sentencecn = document.getElementById('sentencecn')
+        boxword.textContent = resp.data.data.toString().replace("_"," ")
+    })
+    boxword.onclick = function (){
+         axios.get('http://10.226.8.13:8080/english').then(function (resp){
+        // var sentence = document.getElementById('sentence')
+        // var sentencecn = document.getElementById('sentencecn')
+        boxword.textContent = resp.data.data.toString().replace("_"," ")
+    })
+        meaning.textContent="(点我看单词释意和音标)"
+    }
+    meaning.onclick = function (){
+        meaning.textContent = "加载中..."
+            axios.get('static/words/'+boxword.textContent.replace(" ","_")+'.json').then(function (resp){
+                boxword.textContent+=resp.data.accent
+                meaning.textContent = resp.data.mean_cn
+                // meaning.textContent+=resp.data.sentence_trans
+            })
+        }
+
+</script>
+<script>
+    axios.get('https://v1.yiketianqi.com/api?unescape=1&version=v91&appid=51571794&appsecret=Yoc2JURa&ext=&cityid=&city=%E5%B9%BF%E5%B7%9E')
+        .then(function (resp){
+        var tempbox = document.getElementById('tempbox')
+        var descbox = document.getElementById('descriptionbox')
+        t1=resp.data['data'][0]['tem1']
+        t2=resp.data['data'][0]['tem2']
+        desc=resp.data['data'][0]['wea']
+        tempbox.textContent=t1+"℃/"+t2+"℃"
+        descbox.textContent=desc
+    })
+</script>
+<script>
+        var no = document.cookie.replace(
+  /(?:(?:^|.*;\s*)no\s*\=\s*([^;]*).*$)|^.*$/,
+  "$1",
+);
+        if (no == ""){
+        alert("请先登录！")
+        window.location.href = "/"
+    }
+    axios.post('http://10.226.8.13:8080/general',{'name': no}).then(function(resp){
+        var actlst = [
+            document.getElementById("act1"),
+            document.getElementById("act2"),
+            document.getElementById("act3"),
+            document.getElementById("act4"),
+            document.getElementById("act5"),
+            document.getElementById("act6"),
+            document.getElementById("act7")
+        ]
+
+        var todolst = [
+        document.getElementById("todo1"),
+        document.getElementById("todo2"),
+        document.getElementById("todo3"),
+        document.getElementById("todo4"),
+        document.getElementById("todo5")
+        ]
+
+        var expendlst = [
+        document.getElementById("expend1"),
+        document.getElementById("expend2"),
+        document.getElementById("expend3"),
+        document.getElementById("expend4"),
+        document.getElementById("expend5")
+        ]
+
+        var healthlst = [
+        document.getElementById("bmi"),
+        document.getElementById("steps"),
+        document.getElementById("heartbeat"),
+        document.getElementById("sporttime"),
+        ]
+
+        var data = resp.data.data
+        var i = 0;
+        for(var act in actlst){
+            actlst[i].textContent = data.activities[i][2]+"->"+data.activities[i][3]+"分钟";
+            i+=1
+        }
+
+        i = 0;
+        for(var todo in todolst){
+            todolst[i].textContent = data.todo[i][2];
+            i+=1
+        }
+
+        i = 0;
+        for(var expend in expendlst){
+            expendlst[i].textContent = data.expend[i][2]+"->"+data.expend[i][3];
+            i+=1
+        }
+        i = 0;
+        for(var health in healthlst){
+            healthlst[i].textContent = data.health[i][0][2];
+            i+=1
+        }
+        document.getElementById("grade").textContent = data.grade
+
+        }
+    )
+</script>
+<script>
+    var no = document.cookie.replace(
+  /(?:(?:^|.*;\s*)no\s*\=\s*([^;]*).*$)|^.*$/,
+  "$1",
+);
+        var pwd = document.cookie.replace(
+  /(?:(?:^|.*;\s*)pwd\s*\=\s*([^;]*).*$)|^.*$/,
+  "$1",
+);
+
+    axios.post('http://10.226.8.13:8080/getclasstable',{'stuno':no,'pwd':pwd}).then(function (resp){
+        var ifr = document.getElementById('ifr')
+        var statement = document.getElementById('statement')
+        var tnotice = document.getElementById('table_notify')
+        table=resp.data['data']
+        if(table.search("用户登录")!==-1){
+            alert("加载失败！可能是密码错误，请尝试刷新或重新登录")
+            tnotice.style.display = "block"
+        }
+        ifr.srcdoc = table
+        ifrbig.srcdoc = table
+        statement.textContent = "课程表（单击放大查看详情）"
+    })
+</script>
+
+</body>
+</html>
